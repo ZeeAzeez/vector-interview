@@ -10,22 +10,24 @@ export default function Signup() {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data); // Handle signup logic here
+    console.log(data);
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex items-center justify-center min-h-screen bg-red-100">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="p-6 bg-white rounded shadow-md"
+        className="w-99 p-10 bg-white rounded shadow-md"
       >
-        <h2 className="text-2xl font-bold mb-4">Signup</h2>
+        <h2 className="text-2xl font-bold mb-6 text-black text-center">
+          Signup
+        </h2>
         <div className="mb-4">
           <label className="block text-gray-700">Name</label>
           <input
             type="text"
             {...register("name", { required: "Name is required" })}
-            className="w-full px-3 py-2 border rounded"
+            className="w-full px-15 py-2 border rounded"
           />
           {errors.name && <p className="text-red-500">{errors.name.message}</p>}
         </div>
@@ -34,7 +36,7 @@ export default function Signup() {
           <input
             type="email"
             {...register("email", { required: "Email is required" })}
-            className="w-full px-3 py-2 border rounded"
+            className="w-full px-15 py-2 border rounded"
           />
           {errors.email && (
             <p className="text-red-500">{errors.email.message}</p>
@@ -53,7 +55,7 @@ export default function Signup() {
         </div>
         <button
           type="submit"
-          className="w-full bg-blue-500 text-white py-2 rounded"
+          className="w-full bg-blue-500 text-white font-bold text-lg py-2 rounded"
         >
           Signup
         </button>
