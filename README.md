@@ -1,15 +1,35 @@
-# Vector Interview - Frontend Setup
+# Vector Interview - Frontend Challenge
 
-## 🚀 Project Setup
+## Overview
+
+This project is a frontend implementation of a basic authentication system (Login and Signup pages) for Vector Interview, built using Next.js.
+
+## Technologies Used
+
+- Next.js
+- React Hook Form (for form validation)
+- Tailwind CSS (for styling)
+
+## How to Run
 
 1. Clone the repository:
 
-2.
+   ```bash
+   git clone <your-repo-url>
 
-3. Run the development server: npm run dev
+   ```
 
-4. ## 🛠️ Tech Stack
+2. Install dependencies:
+   npm install
 
-- Next.js
-- Tailwind CSS
-- React Hook Form
+3. Start the development server:
+   npm run dev
+   Open http://localhost:3000 in your browser.
+
+## Component Architecture
+
+Login Page: Handles user login with email and password.
+
+Signup Page: Handles user registration with name, email, and password.
+
+Both pages use react-hook-form for form validation.
