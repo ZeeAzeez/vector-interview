@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 
 export default function Home() {
-  redirect("/auth/login"); // Automatically redirect to login
+  redirect("/dashboard"); // Automatically redirect to Dashboard
   return null; // Nothing is rendered
 }
