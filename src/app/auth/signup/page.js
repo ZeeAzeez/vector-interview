@@ -27,7 +27,7 @@ export default function Signup() {
           <input
             type="text"
             {...register("name", { required: "Name is required" })}
-            className="w-full px-15 py-2 border rounded"
+            className="w-full px-4 py-2 border rounded"
           />
           {errors.name && <p className="text-red-500">{errors.name.message}</p>}
         </div>
@@ -36,7 +36,7 @@ export default function Signup() {
           <input
             type="email"
             {...register("email", { required: "Email is required" })}
-            className="w-full px-15 py-2 border rounded"
+            className="w-full px-4 py-2 border rounded"
           />
           {errors.email && (
             <p className="text-red-500">{errors.email.message}</p>
@@ -47,7 +47,7 @@ export default function Signup() {
           <input
             type="password"
             {...register("password", { required: "Password is required" })}
-            className="w-full px-3 py-2 border rounded"
+            className="w-full px-4 py-2 border rounded"
           />
           {errors.password && (
             <p className="text-red-500">{errors.password.message}</p>

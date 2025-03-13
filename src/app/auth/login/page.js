@@ -27,7 +27,7 @@ export default function Login() {
           <input
             type="email"
             {...register("email", { required: "Email is required" })}
-            className="w-full px-4 py-2 border rounded"
+            className="w-full px-4 py-2 border rounded text-black-700"
           />
           {errors.email && (
             <p className="text-red-500">{errors.email.message}</p>
