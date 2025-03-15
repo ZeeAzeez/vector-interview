@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function Dashboard() {
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
+    <div className="min-h-screen bg-gradient-to-br from-blue-100 to-purple-100 p-6">
       <h1 className="text-3xl font-bold mb-6 mt-8">Admin Dashboard</h1>
 
       <div className="grid grid-cols-3 gap-6">

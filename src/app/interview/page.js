@@ -35,7 +35,7 @@ export default function InterviewList() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
+    <div className="min-h-screen bg-gradient-to-br from-blue-100 to-purple-100 p-6">
       <h1 className="text-3xl font-bold mb-6">Interview List</h1>
 
       <div className="bg-white p-6 rounded shadow-md">
@@ -81,7 +81,7 @@ export default function InterviewList() {
 
       <div className="mt-6">
         <Link href="/dashboard/create-interview">
-          <Button className="bg-green-500 text-white">Create Interview</Button>
+          <Button className="bg-blue-500 text-white">Create Interview</Button>
         </Link>
       </div>
     </div>
