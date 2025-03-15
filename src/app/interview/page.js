@@ -9,6 +9,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const interviews = [
   {
@@ -64,7 +65,9 @@ export default function Interview() {
       </div>
 
       <div className="mt-6">
-        <Button className="bg-green-500 text-white">Create Interview</Button>
+        <Link href="/dashboard/create-interview">
+          <Button className="bg-green-500 text-white">Create Interview</Button>
+        </Link>
       </div>
     </div>
   );
