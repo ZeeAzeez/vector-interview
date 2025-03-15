@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import axios from "axios";
 import {
   Table,
   TableBody,
@@ -11,57 +13,70 @@ import {
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-const interviews = [
-  {
-    id: 1,
-    title: "Frontend Developer Interview",
-    status: "Scheduled",
-    date: "2025-03-10",
-  },
-  {
-    id: 2,
-    title: "Backend Developer Interview",
-    status: "Completed",
-    date: "2025-03-08",
-  },
-  {
-    id: 3,
-    title: "Fullstack Developer Interview",
-    status: "Scheduled",
-    date: "2025-03-15",
-  },
-  {
-    id: 4,
-    title: "Product Manager Interview",
-    status: "Pending",
-    date: "2025-03-07",
-  },
-];
+export default function InterviewList() {
+  const [interviews, setInterviews] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
-export default function Interview() {
+  useEffect(() => {
+    axios
+      .get(
+        "https://67d555f9d2c7857431f0146c.mockapi.io/vector-interviews/interviews"
+      )
+      .then((response) => {
+        setInterviews(response.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching interviews:", error);
+        setError("Failed to load interviews. Please try again.");
+        setLoading(false);
+      });
+  }, []);
+
   return (
     <div className="min-h-screen bg-gray-100 p-6">
       <h1 className="text-3xl font-bold mb-6">Interview List</h1>
 
       <div className="bg-white p-6 rounded shadow-md">
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Title</TableHead>
-              <TableHead>Status</TableHead>
-              <TableHead>Date Created</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {interviews.map((interview) => (
-              <TableRow key={interview.id}>
-                <TableCell>{interview.title}</TableCell>
-                <TableCell>{interview.status}</TableCell>
-                <TableCell>{interview.date}</TableCell>
+        {/* this shows the loading state of the interviews */}
+        {loading && (
+          <p className="text-center text-gray-600">Loading interviews...</p>
+        )}
+
+        {/* this shows the error message if interviews fail to load */}
+        {error && <p className="text-center text-red-500">{error}</p>}
+
+        {!loading && !error && (
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Title</TableHead>
+                <TableHead>Status</TableHead>
+                <TableHead>Date Created</TableHead>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+            </TableHeader>
+            <TableBody>
+              {interviews.length > 0 ? (
+                interviews.map((interview) => (
+                  <TableRow key={interview.id}>
+                    <TableCell>{interview.title}</TableCell>
+                    <TableCell>{interview.status}</TableCell>
+                    <TableCell>
+                      {new Date(interview.createdAt).toLocaleDateString()}
+                    </TableCell>
+                  </TableRow>
+                ))
+              ) : (
+                <TableRow>
+                  <TableCell colSpan="3" className="text-center text-gray-500">
+                    No interviews available.
+                  </TableCell>
+                </TableRow>
+              )}
+            </TableBody>
+          </Table>
+        )}
       </div>
 
       <div className="mt-6">

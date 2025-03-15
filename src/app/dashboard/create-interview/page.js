@@ -14,7 +14,7 @@ export default function CreateInterview() {
 
     try {
       const response = await axios.post(
-        "https://jsonplaceholder.typicode.com/posts",
+        "https://67d555f9d2c7857431f0146c.mockapi.io/vector-interviews/interviews",
         data,
         {
           headers: { "Content-Type": "application/json" },
