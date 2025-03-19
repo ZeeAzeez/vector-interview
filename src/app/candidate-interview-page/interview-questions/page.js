@@ -98,7 +98,7 @@ export default function InterviewQuestions() {
         </div>
       ) : (
         // Quiz Screen
-        <div className="bg-white p-6 rounded-lg shadow-lg max-w-lg text-center">
+        <div className="bg-white p-8 rounded-lg shadow-lg max-w-4xl text-center">
           <div className="text-sm font-semibold text-gray-500 mb-2">
             ⏳ Time Left: {formatTime(timeLeft)}
           </div>
