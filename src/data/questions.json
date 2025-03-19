@@ -1,38 +1,137 @@
 [
-    {
-      "question": "What type of framework is Next.js?",
+  {
+      "question": "Tell me about yourself.",
       "answerOptions": [
-        { "answer": "Frontend" },
-        { "answer": "Backend" },
-        { "answer": "FullStack", "isCorrect": true },
-        { "answer": "None of the above" }
+          { "answer": "Talk about personal interests only" },
+          { "answer": "Summarize professional experience and key skills", "isCorrect": true },
+          { "answer": "Give only a one-word answer" },
+          { "answer": "Discuss irrelevant hobbies in detail" }
       ]
-    },
-    {
-      "question": "When was Next.js released?",
+  },
+  {
+      "question": "What are your strengths?",
       "answerOptions": [
-        { "answer": "20 September 2019" },
-        { "answer": "14 January 2017" },
-        { "answer": "25 October 2016", "isCorrect": true },
-        { "answer": "28 March 2018" }
+          { "answer": "List soft and hard skills relevant to the job", "isCorrect": true },
+          { "answer": "Say you have no strengths" },
+          { "answer": "Only talk about one skill" },
+          { "answer": "List strengths unrelated to the job" }
       ]
-    },
-    {
-      "question": "Which CSS Framework are we using?",
+  },
+  {
+      "question": "What is your greatest weakness?",
       "answerOptions": [
-        { "answer": "Bootstrap" },
-        { "answer": "TailwindCSS", "isCorrect": true },
-        { "answer": "Chakra UI" },
-        { "answer": "Bulma CSS" }
+          { "answer": "Describe a weakness and how you're improving it", "isCorrect": true },
+          { "answer": "Say you have no weaknesses" },
+          { "answer": "Mention a weakness without a solution" },
+          { "answer": "List weaknesses that are critical for the job" }
       ]
-    },
-    {
-      "question": "Which class in Tailwind is used to set flex direction of column?",
+  },
+  {
+      "question": "Why do you want to work at this company?",
       "answerOptions": [
-        { "answer": "col" },
-        { "answer": "col-flex" },
-        { "answer": "flex-col", "isCorrect": true },
-        { "answer": "None of the above" }
+          { "answer": "Mention company values and how they align with your goals", "isCorrect": true },
+          { "answer": "Say 'for the money'" },
+          { "answer": "Give a generic response that could apply to any company" },
+          { "answer": "Say you just applied randomly" }
       ]
-    }
-  ]
+  },
+  {
+      "question": "Where do you see yourself in five years?",
+      "answerOptions": [
+          { "answer": "Discuss career growth and learning goals", "isCorrect": true },
+          { "answer": "Say you have no idea" },
+          { "answer": "Say you don't plan to stay long" },
+          { "answer": "Mention a completely different career path" }
+      ]
+  },
+  {
+      "question": "Tell me about a time you faced a challenge at work and how you handled it.",
+      "answerOptions": [
+          { "answer": "Use the STAR method (Situation, Task, Action, Result)", "isCorrect": true },
+          { "answer": "Say you never face challenges" },
+          { "answer": "Blame others for the challenge" },
+          { "answer": "Give an unrelated personal story" }
+      ]
+  },
+  {
+      "question": "What motivates you?",
+      "answerOptions": [
+          { "answer": "Talk about personal and professional motivators", "isCorrect": true },
+          { "answer": "Say you don't need motivation" },
+          { "answer": "Give a vague answer with no examples" },
+          { "answer": "Only mention salary as motivation" }
+      ]
+  },
+  {
+      "question": "Tell me about a time you worked in a team.",
+      "answerOptions": [
+          { "answer": "Give an example of collaboration and problem-solving", "isCorrect": true },
+          { "answer": "Say you don’t like working in teams" },
+          { "answer": "Give an example unrelated to work" },
+          { "answer": "Blame team members for failure" }
+      ]
+  },
+  {
+      "question": "What would you do if you disagreed with your manager?",
+      "answerOptions": [
+          { "answer": "Professionally explain your viewpoint and seek common ground", "isCorrect": true },
+          { "answer": "Refuse to follow instructions" },
+          { "answer": "Ignore the disagreement" },
+          { "answer": "Talk negatively about the manager" }
+      ]
+  },
+  {
+      "question": "How do you handle stress at work?",
+      "answerOptions": [
+          { "answer": "Use time management and stress-relief techniques", "isCorrect": true },
+          { "answer": "Say you never get stressed" },
+          { "answer": "Let stress affect your performance without solutions" },
+          { "answer": "Take long breaks frequently" }
+      ]
+  },
+  {
+      "question": "Why should we hire you?",
+      "answerOptions": [
+          { "answer": "Highlight your skills, experience, and how you fit the role", "isCorrect": true },
+          { "answer": "Say 'Because I need a job'" },
+          { "answer": "Give a very generic response" },
+          { "answer": "Only list skills without examples" }
+      ]
+  },
+  {
+      "question": "Describe a time you had to meet a tight deadline.",
+      "answerOptions": [
+          { "answer": "Explain how you prioritized tasks and met the deadline", "isCorrect": true },
+          { "answer": "Say you never had tight deadlines" },
+          { "answer": "Say you don’t handle pressure well" },
+          { "answer": "Blame others for missing deadlines" }
+      ]
+  },
+  {
+      "question": "What would you do if you made a mistake at work?",
+      "answerOptions": [
+          { "answer": "Take responsibility, learn from it, and fix it", "isCorrect": true },
+          { "answer": "Try to hide the mistake" },
+          { "answer": "Blame a coworker" },
+          { "answer": "Ignore the mistake and hope no one notices" }
+      ]
+  },
+  {
+      "question": "How do you stay updated with industry trends?",
+      "answerOptions": [
+          { "answer": "Read blogs, take courses, attend events", "isCorrect": true },
+          { "answer": "Ignore new trends" },
+          { "answer": "Rely only on past experience" },
+          { "answer": "Follow random social media accounts" }
+      ]
+  },
+  {
+      "question": "Do you have any questions for us?",
+      "answerOptions": [
+          { "answer": "Ask about company culture, growth, and expectations", "isCorrect": true },
+          { "answer": "Say 'No, I have no questions'" },
+          { "answer": "Ask about salary first" },
+          { "answer": "Say you just want the job without questions" }
+      ]
+  }
+]
