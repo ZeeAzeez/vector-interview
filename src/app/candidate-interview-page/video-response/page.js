@@ -1,10 +1,12 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 export default function VideoInterview() {
   const [recording, setRecording] = useState(false);
   const [recordedVideo, setRecordedVideo] = useState(null);
+  const [error, setError] = useState(null);
+  const [isCameraStarted, setIsCameraStarted] = useState(false); // Track if the camera is started
   const videoRef = useRef(null);
   const mediaRecorderRef = useRef(null);
   const recordedChunksRef = useRef([]);
@@ -16,47 +18,77 @@ export default function VideoInterview() {
         video: true,
         audio: true,
       });
-      videoRef.current.srcObject = stream;
+      if (videoRef.current) {
+        videoRef.current.srcObject = stream;
+      }
+      setIsCameraStarted(true); // Mark camera as started
+      setError(null);
     } catch (error) {
       console.error("Error accessing camera:", error);
+      setError(
+        "Failed to access camera. Please ensure your camera and microphone are enabled and try again."
+      );
     }
   };
 
   // Start recording
   const startRecording = () => {
-    recordedChunksRef.current = [];
-    const stream = videoRef.current.srcObject;
-    mediaRecorderRef.current = new MediaRecorder(stream, {
-      mimeType: "video/webm",
-    });
+    if (!videoRef.current?.srcObject) {
+      setError("Please start the camera first.");
+      return;
+    }
 
-    mediaRecorderRef.current.ondataavailable = (event) => {
-      if (event.data.size > 0) {
-        recordedChunksRef.current.push(event.data);
-      }
-    };
-
-    mediaRecorderRef.current.onstop = () => {
-      const blob = new Blob(recordedChunksRef.current, {
-        type: "video/webm",
+    try {
+      recordedChunksRef.current = [];
+      const stream = videoRef.current.srcObject;
+      mediaRecorderRef.current = new MediaRecorder(stream, {
+        mimeType: "video/webm",
       });
-      setRecordedVideo(URL.createObjectURL(blob));
-    };
 
-    mediaRecorderRef.current.start();
-    setRecording(true);
+      mediaRecorderRef.current.ondataavailable = (event) => {
+        if (event.data.size > 0) {
+          recordedChunksRef.current.push(event.data);
+        }
+      };
+
+      mediaRecorderRef.current.onstop = () => {
+        const blob = new Blob(recordedChunksRef.current, {
+          type: "video/webm",
+        });
+        setRecordedVideo(URL.createObjectURL(blob));
+        setError(null);
+      };
+
+      mediaRecorderRef.current.start();
+      setRecording(true);
+    } catch (error) {
+      console.error("Error starting recording:", error);
+      setError("Failed to start recording. Please try again.");
+    }
   };
 
   // Stop recording
   const stopRecording = () => {
-    mediaRecorderRef.current.stop();
-    setRecording(false);
+    if (
+      mediaRecorderRef.current &&
+      mediaRecorderRef.current.state === "recording"
+    ) {
+      try {
+        mediaRecorderRef.current.stop();
+        setRecording(false);
+      } catch (error) {
+        console.error("Error stopping recording:", error);
+        setError("Failed to stop recording. Please try again.");
+      }
+    }
   };
 
   // Play recorded video
   const playRecordedVideo = () => {
     const recordedVideoElement = document.getElementById("recorded-video");
-    recordedVideoElement.play();
+    if (recordedVideoElement) {
+      recordedVideoElement.play();
+    }
   };
 
   return (
@@ -66,6 +98,13 @@ export default function VideoInterview() {
           Video Interview
         </h1>
 
+        {/* Error Message */}
+        {error && (
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded mb-6">
+            {error}
+          </div>
+        )}
+
         {/* Video Preview */}
         <video
           ref={videoRef}
@@ -74,6 +113,7 @@ export default function VideoInterview() {
           className="w-full h-100 bg-white-200 rounded-lg mb-8"
         ></video>
 
+        {/* Recording Controls */}
         <div className="flex justify-center space-x-5 mb-8">
           <button
             onClick={startCamera}
@@ -83,7 +123,7 @@ export default function VideoInterview() {
           </button>
           <button
             onClick={startRecording}
-            disabled={recording}
+            disabled={!isCameraStarted || recording} // Disable if camera isn't started or already recording
             className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded disabled:bg-gray-300"
           >
             Start Recording
