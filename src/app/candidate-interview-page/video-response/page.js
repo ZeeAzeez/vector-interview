@@ -6,7 +6,7 @@ export default function VideoInterview() {
   const [recording, setRecording] = useState(false);
   const [recordedVideo, setRecordedVideo] = useState(null);
   const [error, setError] = useState(null);
-  const [isCameraStarted, setIsCameraStarted] = useState(false); // Track if the camera is started
+  const [isCameraStarted, setIsCameraStarted] = useState(false); 
   const videoRef = useRef(null);
   const mediaRecorderRef = useRef(null);
   const recordedChunksRef = useRef([]);
@@ -21,7 +21,7 @@ export default function VideoInterview() {
       if (videoRef.current) {
         videoRef.current.srcObject = stream;
       }
-      setIsCameraStarted(true); // Mark camera as started
+      setIsCameraStarted(true); 
       setError(null);
     } catch (error) {
       console.error("Error accessing camera:", error);
@@ -158,7 +158,7 @@ export default function VideoInterview() {
           </div>
         )}
 
-        {/* Submit Button */}
+      
         <div className="mt-8">
           <button
             onClick={() => alert("Video submitted!")}
